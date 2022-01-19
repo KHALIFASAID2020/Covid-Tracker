@@ -1,5 +1,4 @@
 # Covid-Tracker
-# Andromeda CUPRECO : Custumer Product Recommendation
 
 ### Prérequis :
 

@@ -1,4 +1,4 @@
-package com.covid.tracker.domain.shared;
+package com.covid.tracker.domain.shared.enums;
 
 import lombok.Getter;
 import lombok.Setter;

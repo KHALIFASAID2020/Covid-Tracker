@@ -1,7 +1,6 @@
-package com.covid.tracker.domain.vaccination.model;
+package com.covid.tracker.domain.model;
 
-import com.covid.tracker.domain.patient.model.PatientVaccination;
-import com.covid.tracker.domain.shared.Auditable;
+import com.covid.tracker.domain.shared.enums.Auditable;
 import com.covid.tracker.domain.shared.VaccinationType;
 import lombok.*;
 

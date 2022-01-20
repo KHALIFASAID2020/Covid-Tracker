@@ -1,13 +1,13 @@
-package com.covid.tracker.domain.shared;
+package com.covid.tracker.domain.shared.enums;
 
-public enum Country {
-    FRANCE("FRANCE"),
+public enum ResultTest {
+    POSITIVE("Positive"),
 
-    TUNISIA("TUNISIA");
+    NEGATIVE("Negative");
 
     private String value;
 
-    Country(String value) {
+    ResultTest(String value) {
         this.value = value;
     }
 

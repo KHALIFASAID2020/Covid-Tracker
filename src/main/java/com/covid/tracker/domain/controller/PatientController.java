@@ -1,4 +1,4 @@
-package com.covid.tracker.domain.patient.controller;
+package com.covid.tracker.domain.controller;
 
 import com.covid.tracker.CasesOfCovidApi;
 import com.covid.tracker.CasesOfCovidApiDelegate;

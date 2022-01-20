@@ -1,12 +1,10 @@
-package com.covid.tracker.domain.patient.model;
+package com.covid.tracker.domain.model;
 
-import com.covid.tracker.domain.shared.Auditable;
-import com.covid.tracker.domain.vaccination.model.Vaccination;
+import com.covid.tracker.domain.shared.enums.Auditable;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter

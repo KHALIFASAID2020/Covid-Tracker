@@ -1,4 +1,5 @@
 spring:
+  application: covid-tracker-service
   h2:
     console:
       enabled: true
@@ -11,3 +12,10 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      jdbc:
+        batch_size: 100
+    liquibase:
+      enabled: true

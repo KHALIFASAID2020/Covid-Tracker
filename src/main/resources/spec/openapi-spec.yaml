@@ -1,0 +1,97 @@
+openapi: 3.0.2
+info:
+  title: Covid-19 Tracker (Java)
+  description: Covid-19 Tracker Report Microservice
+  version: '0.1'
+servers:
+  - url: http://localhost:/8080
+tags:
+  - name: Cases
+    description: cases of covid with daily/monthly
+  - name: Vacctination
+    description: vaccination management
+
+paths:
+  /cases-of-covid:
+    get:
+      tags:
+        - Cases
+      summary: Get Countries
+      operationId: getCountries
+      responses:
+        200:
+          description: countries
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Found objects
+                items:
+                  $ref: '#/components/schemas/countryResponseDto'
+
+components:
+  schemas:
+    countryResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id of  country
+          example: 12
+        name:
+          type: string
+          description: country name
+          example: Tunisie
+        nationality:
+          type: string
+          description: nationality
+          example: Tunisienne
+        code:
+          type: string
+          description: code
+          example: TN
+        codeAlpha3:
+          type: string
+          description: codeAlpha3
+          example: TNN
+
+    Error:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+  responses:
+    Error:
+      description: Error accessing the service consistent with http status code
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InvalidInput:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Unable to find resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  parameters:
+    organizationCode:
+      in: query
+      name: organizationCode
+      schema:
+        type: string
+        default: 9821HGT1
+      description: The organization Code

@@ -6,7 +6,7 @@ spring:
   server:
     port: 8080
   datasource:
-    url: jdbc:h2:mem:covid-tracker;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:covid-19-tracker;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
     username: sa
     password: sa
     driver-class-name: org.h2.Driver
@@ -19,3 +19,7 @@ spring:
         batch_size: 100
     liquibase:
       enabled: true
+spring.jpa.properties.hibernate.jdbc.batch_size: 1000
+spring.jpa.properties.hibernate.order_inserts: true
+spring.jpa.properties.hibernate.order_updates: true
+spring.jpa.properties.hibernate.generate_statistics: true

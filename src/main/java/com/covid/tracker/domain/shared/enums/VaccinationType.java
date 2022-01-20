@@ -1,4 +1,4 @@
-package com.covid.tracker.domain.shared;
+package com.covid.tracker.domain.shared.enums;
 
 public enum VaccinationType {
     JOHNSON("Johnson"),

@@ -28,9 +28,78 @@ paths:
                 description: Found objects
                 items:
                   $ref: '#/components/schemas/countryResponseDto'
+    post:
+      tags:
+        - Cases
+      summary: Create cases covid
+      operationId: saveAllCases
+      requestBody:
+        description: patient list object that needs to be added
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Found objects
+              items:
+                $ref: '#/components/schemas/PatientPostDto'
+      responses:
+        201:
+          description: User Created
+          content:
+            application/json:
+              schema:
+                type: integer
+        default:
+          $ref: '#/components/responses/Error'
 
 components:
   schemas:
+    PatientPostDto:
+      type: object
+      properties:
+        lastName:
+          type: string
+          description: lastName patient
+          example: lorant
+        firstName:
+          type: string
+          description: patient firstName
+          example: Martin
+        birthDate:
+          type: string
+          format: date
+          description: birthDate
+          example: "2021-01-30"
+        address:
+          type: string
+          description: user address
+          example: 24 Rue Saint-Lazare
+        cellPhone:
+          type: string
+          description: user cell Phone
+          example: 00216 22 150 423
+        testDate:
+          type: string
+          format: date-time
+          description: date of test
+          example: "2021-01-30T08:30:00Z"
+        resultTest:
+          $ref: '#/components/schemas/ResultTest'
+        country:
+          $ref: '#/components/schemas/Country'
+    Country:
+      type: string
+      enum:
+        - FRANCE
+        - TUNISIA
+        - MEXICO
+        - POLAND
+        - UKRAINE
+    ResultTest:
+      type: string
+      enum:
+        - POSITIVE
+        - NEGATIVE
     countryResponseDto:
       type: object
       properties:

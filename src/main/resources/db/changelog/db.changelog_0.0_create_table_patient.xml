@@ -19,6 +19,8 @@
             <column name="address" type="VARCHAR(255)"/>
             <column name="cell_phone" type="VARCHAR(255)"/>
             <column name="country" type="VARCHAR(255)"/>
+            <column name="test_date" type="datetime"/>
+            <column name="result_test" type="VARCHAR(255)"/>
             <column name="created_at" type="datetime">
                 <constraints nullable="false"/>
             </column>

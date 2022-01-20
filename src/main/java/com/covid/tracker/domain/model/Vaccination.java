@@ -1,7 +1,7 @@
 package com.covid.tracker.domain.model;
 
-import com.covid.tracker.domain.shared.enums.Auditable;
-import com.covid.tracker.domain.shared.VaccinationType;
+import com.covid.tracker.domain.shared.Auditable;
+import com.covid.tracker.domain.shared.enums.VaccinationType;
 import lombok.*;
 
 import javax.persistence.*;

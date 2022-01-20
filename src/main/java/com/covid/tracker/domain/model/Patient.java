@@ -1,12 +1,15 @@
 package com.covid.tracker.domain.model;
 
-import com.covid.tracker.domain.shared.enums.Auditable;
-import com.covid.tracker.domain.shared.enums.Country;
+import com.covid.tracker.domain.shared.Auditable;
+import com.covid.tracker.dto.Country;
+import com.covid.tracker.dto.ResultTest;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +21,9 @@ import java.util.List;
 @Entity
 @Table(name = "T_PATIENT")
 public class Patient extends Auditable implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(generator = "abc")
+    @GenericGenerator(name = "abc", strategy = "increment")
     private Long id;
     @Column(name = "last_name")
     private String lastName;
@@ -34,9 +38,12 @@ public class Patient extends Auditable implements Serializable {
     @Column(name = "country")
     @Enumerated(EnumType.STRING)
     private Country country;
+    @Column(name = "test_date")
+    private LocalDateTime testDate;
+    @Column(name = "result_test")
+    @Enumerated(EnumType.STRING)
+    private ResultTest resultTest;
     @OneToMany(mappedBy = "patient", cascade = CascadeType.REMOVE)
     private List<PatientVaccination> patientVaccinations = new ArrayList<>();
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.REMOVE)
-    private List<Test> tests = new ArrayList<>();
 
 }

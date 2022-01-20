@@ -1,6 +1,6 @@
 package com.covid.tracker.domain.model;
 
-import com.covid.tracker.domain.shared.enums.Auditable;
+import com.covid.tracker.domain.shared.Auditable;
 import lombok.*;
 
 import javax.persistence.*;

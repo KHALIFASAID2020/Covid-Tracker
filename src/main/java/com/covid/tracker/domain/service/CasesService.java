@@ -1,39 +1,43 @@
 package com.covid.tracker.domain.service;
 
+import com.covid.tracker.domain.dto.CaseDto;
+import com.covid.tracker.domain.mapper.CaseMapper;
+import com.covid.tracker.domain.model.Case;
+import com.covid.tracker.domain.repository.CaseRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
 public class CasesService {
-  /*  private final PatientMapper patientMapper;
-    private final PatientRepository patientRepository;
+ private final CaseMapper caseMapper;
+    private final CaseRepository caseRepository;
 
-    public CasesService(PatientMapper patientMapper, PatientRepository patientRepository) {
-        this.patientMapper = patientMapper;
-        this.patientRepository = patientRepository;
+    public CasesService(CaseMapper caseMapper, CaseRepository caseRepository) {
+        this.caseMapper = caseMapper;
+        this.caseRepository = caseRepository;
     }
 
-    public Integer save(List<PatientPostDto> bulkPatientPostDtoList) {
-        List<Patient> patients = new ArrayList<>();
-        for (PatientPostDto patientPostDto : bulkPatientPostDtoList) {
-            Patient patient = patientMapper.toEntity(patientPostDto);
-            patients.add(patient);
+
+    public Integer saveAllCases(List<CaseDto> bulkCaseDtos) {
+        List<Case> cases = new ArrayList<>();
+        for (CaseDto caseDto : bulkCaseDtos) {
+            Case caseCovid = caseMapper.toEntity(caseDto);
+            cases.add(caseCovid);
         }
-        return patientRepository.saveAll(patients).size();
+        return caseRepository.saveAll(cases).size();
     }
 
-    public Integer update(List<PatientPostDto> bulkPatientPostDtoList) {
-        List<Patient> patients = new ArrayList<>();
-        for (PatientPostDto patientPostDto : bulkPatientPostDtoList) {
-            Patient patient = patientRepository.findById(patientPostDto.getId()).get();
-            patient = patientMapper.mergeToEntity(patient, patientPostDto);
-            patients.add(patient);
+    public Integer updateAllCases(List<CaseDto> bulkCaseDtos) {
+        List<Case> cases = new ArrayList<>();
+        for (CaseDto caseDto : bulkCaseDtos) {
+            Case caseCovid = caseRepository.findById(caseDto.getId()).get();
+            caseCovid = caseMapper.mergeToEntity(caseCovid, caseDto);
+            cases.add(caseCovid);
         }
-        return patientRepository.saveAll(patients).size();
-    }*/
+        return caseRepository.saveAll(cases).size();
+    }
 }

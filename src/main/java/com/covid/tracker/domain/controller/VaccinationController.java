@@ -1,38 +1,47 @@
 package com.covid.tracker.domain.controller;
 
+import com.covid.tracker.domain.dto.CaseDto;
+import com.covid.tracker.domain.dto.VaccinationDto;
+import com.covid.tracker.domain.service.CasesService;
+import com.covid.tracker.domain.service.VaccinationService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
 @Slf4j
-@RequestMapping("/api/vaccination")
+@RequestMapping(value = VaccinationController.ROOT_RESOURCE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class VaccinationController {
+    public static final String ROOT_RESOURCE = "/api/vaccination";
 
-/*    private final CasesService casesService;
+    private final VaccinationService vaccinationService;
 
-    public PatientController(CasesService casesService) {
-        this.casesService = casesService;
+    public VaccinationController(VaccinationService vaccinationService) {
+        this.vaccinationService = vaccinationService;
+    }
+
+    @PostMapping
+    public ResponseEntity<Integer> saveAllVaccination(@RequestBody List<VaccinationDto> vaccinationDtos) {
+        log.info("Begin save All vaccination");
+        Integer countSaveVaccination = vaccinationService.saveAllVaccination(vaccinationDtos);
+        log.info("End save All vaccination");
+        return ResponseEntity.ok(countSaveVaccination);
+
+    }
+
+    @PutMapping
+    public ResponseEntity<Integer> updateAllCVaccination(@RequestBody List<VaccinationDto> vaccinationDtos) {
+        log.info("Begin update All vaccination");
+        Integer countUpdateCases = vaccinationService.updateAllVaccination(vaccinationDtos);
+        log.info("End update All vaccination");
+        return ResponseEntity.ok(countUpdateCases);
     }
 
 
-    @Override
-    public ResponseEntity<Integer> saveAllCases(List<PatientPostDto> patientPostDto) {
-        log.info("Begin save bulk cases of Patient");
-        Integer countsave = casesService.save(patientPostDto);
-        log.info("End save bulk cases of Patient");
-        return new ResponseEntity(countsave, HttpStatus.CREATED);
-    }
 
-    @Override
-    public ResponseEntity<Integer> updateAllCases(List<PatientPostDto> patientPostDto) {
-        log.info("Begin save bulk cases of Patient");
-        Integer countsave = casesService.update(patientPostDto);
-        log.info("End save bulk cases of Patient");
-        return new ResponseEntity(countsave, HttpStatus.OK);
-    }*/
+
 }

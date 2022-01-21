@@ -16,15 +16,6 @@
 	<properties>
 		<java.version>11</java.version>
 
-		<swagger.version>2.9.2</swagger.version>
-		<swagger-annotations.version>1.5.21</swagger-annotations.version>
-		<swagger-models.version>1.5.21</swagger-models.version>
-		<springfox.version>2.9.2</springfox.version>
-		<openapi-generator-maven-plugin.version>4.2.3</openapi-generator-maven-plugin.version>
-		<problem-spring-web.version>0.25.2</problem-spring-web.version>
-		<jackson-databind.version>0.2.1</jackson-databind.version>
-		<project-base-package>com.covid.tracker</project-base-package>
-		<start-class>${project-base-package}.Covid19TrackerApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,10 +25,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
 		</dependency>
 
 		<dependency>
@@ -56,38 +43,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- begin Swagger Dependecies -->
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-annotations</artifactId>
-			<version>${swagger-annotations.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-models</artifactId>
-			<version>${swagger-models.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.openapitools</groupId>
-			<artifactId>jackson-databind-nullable</artifactId>
-			<version>${jackson-databind.version}</version>
-		</dependency>
-		<!-- zalando for errors management -->
-		<dependency>
-			<groupId>org.zalando</groupId>
-			<artifactId>problem-spring-web</artifactId>
-			<version>${problem-spring-web.version}</version>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.4</version>
 		</dependency>
 
 
@@ -96,37 +55,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.openapitools</groupId>
-				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>${openapi-generator-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/spec/openapi-spec.yaml</inputSpec>
-							<generatorName>spring</generatorName>
-							<apiPackage>${project-base-package}</apiPackage>
-							<modelPackage>${project-base-package}.dto</modelPackage>
-							<invokerPackage>${project-base-package}.swagger</invokerPackage>
-							<skipValidateSpec>false</skipValidateSpec>
-							<strictSpec>true</strictSpec>
-							<importMappings>Problem=org.zalando.problem.Problem</importMappings>
-							<ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
-							<generateApiDocumentation>false</generateApiDocumentation>
-							<generateModelDocumentation>true</generateModelDocumentation>
-							<configOptions>
-								<delegatePattern>true</delegatePattern>
-								<configPackage>${project-base-package}.swagger</configPackage>
-								<!--suppress UnresolvedMavenProperty -->
-								<additionalModelTypeAnnotations>@lombok.Builder @lombok.Data @lombok.NoArgsConstructor @lombok.AllArgsConstructor</additionalModelTypeAnnotations>
-							</configOptions>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

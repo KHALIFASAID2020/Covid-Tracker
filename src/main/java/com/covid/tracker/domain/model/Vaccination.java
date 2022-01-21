@@ -13,10 +13,9 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "T_VACCINATION")
-public class Vaccination extends Auditable implements Serializable {
+public class Vaccination extends Patient implements Serializable {
     @Id
     @GeneratedValue(generator = "abc")
     @GenericGenerator(name = "abc", strategy = "increment")
@@ -25,10 +24,6 @@ public class Vaccination extends Auditable implements Serializable {
     private LocalDateTime vaccinationDate;
     @Column(name = "second_vaccination_date")
     private LocalDateTime secondVaccinationDate;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
     @Enumerated(EnumType.STRING)
     private VaccinationType vaccinationType;
 

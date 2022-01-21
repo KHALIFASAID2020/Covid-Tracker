@@ -1,14 +1,13 @@
 package com.covid.tracker.domain.dto;
 
-import com.covid.tracker.domain.model.Patient;
-import com.covid.tracker.dto.PatientPostDto;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
 public class PatientMapper {
-
+/*
     public Patient toEntity(PatientPostDto patientPostDto) {
         if (patientPostDto == null) {
             return null;
@@ -39,6 +38,6 @@ public class PatientMapper {
         patient.setResultTest(patientPostDto.getResultTest());
         patient.setTestDate(patientPostDto.getTestDate().toLocalDateTime());
         return patient;
-    }
+    }*/
 
 }

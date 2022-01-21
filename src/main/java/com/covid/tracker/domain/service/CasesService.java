@@ -1,9 +1,5 @@
 package com.covid.tracker.domain.service;
 
-import com.covid.tracker.domain.dto.PatientMapper;
-import com.covid.tracker.domain.model.Patient;
-import com.covid.tracker.domain.repository.PatientRepository;
-import com.covid.tracker.dto.PatientPostDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +10,7 @@ import java.util.Optional;
 @Service
 @Slf4j
 public class CasesService {
-    private final PatientMapper patientMapper;
+  /*  private final PatientMapper patientMapper;
     private final PatientRepository patientRepository;
 
     public CasesService(PatientMapper patientMapper, PatientRepository patientRepository) {
@@ -39,5 +35,5 @@ public class CasesService {
             patients.add(patient);
         }
         return patientRepository.saveAll(patients).size();
-    }
+    }*/
 }

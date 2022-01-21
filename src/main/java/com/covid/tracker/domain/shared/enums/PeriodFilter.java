@@ -2,7 +2,7 @@ package com.covid.tracker.domain.shared.enums;
 
 public enum PeriodFilter {
     DAY("DAY"),
-    MONTHLY("FRANCE"),
+    MONTHLY("MONTHLY"),
     YEAR("YEAR");
 
     private String value;

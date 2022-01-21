@@ -2,6 +2,7 @@ package com.covid.tracker.domain.controller;
 
 import com.covid.tracker.domain.dto.CaseDto;
 import com.covid.tracker.domain.dto.PaginationDto;
+import com.covid.tracker.domain.dto.ReportCountryCases;
 import com.covid.tracker.domain.service.CasesService;
 import com.covid.tracker.domain.shared.enums.Country;
 import com.covid.tracker.domain.shared.enums.PeriodFilter;
@@ -46,11 +47,11 @@ public class CaseController {
     }
 
     @GetMapping
-    public PaginationDto<CaseDto> searchSubscription(@RequestParam(required = false) Country country,
-                                                     @RequestParam(required = false) PeriodFilter status,
-                                                     @RequestParam(defaultValue = "0") Integer pageNumber,
-                                                     @RequestParam(defaultValue = "10") Integer pageSize,
-                                                     @RequestParam(defaultValue = "id") String sortBy) {
+    public PaginationDto<ReportCountryCases> searchSubscription(@RequestParam(required = false) Country country,
+                                                                @RequestParam(required = false) PeriodFilter periodFilter,
+                                                                @RequestParam(defaultValue = "0") Integer pageNumber,
+                                                                @RequestParam(defaultValue = "10") Integer pageSize,
+                                                                @RequestParam(defaultValue = "id") String sortBy) {
         Pageable paging = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
         return null;
 

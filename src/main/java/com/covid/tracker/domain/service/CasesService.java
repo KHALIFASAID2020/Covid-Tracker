@@ -2,7 +2,7 @@ package com.covid.tracker.domain.service;
 
 import com.covid.tracker.domain.dto.CaseDto;
 import com.covid.tracker.domain.mapper.CaseMapper;
-import com.covid.tracker.domain.model.Case;
+import com.covid.tracker.domain.model.CaseCovid;
 import com.covid.tracker.domain.repository.CaseRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,18 +23,18 @@ public class CasesService {
 
 
     public Integer saveAllCases(List<CaseDto> bulkCaseDtos) {
-        List<Case> cases = new ArrayList<>();
+        List<CaseCovid> cases = new ArrayList<>();
         for (CaseDto caseDto : bulkCaseDtos) {
-            Case caseCovid = caseMapper.toEntity(caseDto);
+            CaseCovid caseCovid = caseMapper.toEntity(caseDto);
             cases.add(caseCovid);
         }
         return caseRepository.saveAll(cases).size();
     }
 
     public Integer updateAllCases(List<CaseDto> bulkCaseDtos) {
-        List<Case> cases = new ArrayList<>();
+        List<CaseCovid> cases = new ArrayList<>();
         for (CaseDto caseDto : bulkCaseDtos) {
-            Case caseCovid = caseRepository.findById(caseDto.getId()).get();
+            CaseCovid caseCovid = caseRepository.findById(caseDto.getId()).get();
             caseCovid = caseMapper.mergeToEntity(caseCovid, caseDto);
             cases.add(caseCovid);
         }

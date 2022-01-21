@@ -3,11 +3,9 @@ package com.covid.tracker.domain.model;
 import com.covid.tracker.domain.shared.Auditable;
 import com.covid.tracker.domain.shared.enums.Country;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Getter

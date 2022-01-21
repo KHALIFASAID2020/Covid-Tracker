@@ -1,7 +1,7 @@
 package com.covid.tracker.domain.mapper;
 
 import com.covid.tracker.domain.dto.CaseDto;
-import com.covid.tracker.domain.model.Case;
+import com.covid.tracker.domain.model.CaseCovid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CaseMapper {
 
-    public Case toEntity(CaseDto caseDto) {
+    public CaseCovid toEntity(CaseDto caseDto) {
         if (caseDto == null) {
             return null;
         }
-        Case caseCovid = new Case();
+        CaseCovid caseCovid = new CaseCovid();
         caseCovid.setResultTest(caseDto.getResultTest());
         caseCovid.setTestDate(caseDto.getTestDate());
         caseCovid.setAddress(caseDto.getAddress());
@@ -27,7 +27,7 @@ public class CaseMapper {
     }
 
 
-    public CaseDto toDto(Case caseCovid) {
+    public CaseDto toDto(CaseCovid caseCovid) {
         if (caseCovid == null) {
             return null;
         }
@@ -46,7 +46,7 @@ public class CaseMapper {
         return caseDto;
     }
 
-    public Case mergeToEntity(Case caseCovid, CaseDto caseDto) {
+    public CaseCovid mergeToEntity(CaseCovid caseCovid, CaseDto caseDto) {
 
         if (caseDto == null) {
             return null;

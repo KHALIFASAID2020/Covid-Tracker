@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "T_CASE")
-public class Case extends Patient implements Serializable {
+public class CaseCovid extends Patient implements Serializable {
     @Id
     @GeneratedValue(generator = "abc")
     @GenericGenerator(name = "abc", strategy = "increment")

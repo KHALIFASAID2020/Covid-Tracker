@@ -44,6 +44,6 @@ public class Patient extends Auditable implements Serializable {
     @Enumerated(EnumType.STRING)
     private ResultTest resultTest;
     @OneToMany(mappedBy = "patient", cascade = CascadeType.REMOVE)
-    private List<PatientVaccination> patientVaccinations = new ArrayList<>();
+    private List<Vaccination> patientVaccinations = new ArrayList<>();
 
 }

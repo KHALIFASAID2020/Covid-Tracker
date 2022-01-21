@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class PatientMapper {
 
-    public Patient toEntity(PatientPostDto patientPostDto){
+    public Patient toEntity(PatientPostDto patientPostDto) {
         if (patientPostDto == null) {
             return null;
         }
@@ -23,6 +23,22 @@ public class PatientMapper {
                 .resultTest(patientPostDto.getResultTest())
                 .testDate(patientPostDto.getTestDate().toLocalDateTime())
                 .build();
+    }
+
+    public Patient mergeToEntity(Patient patient, PatientPostDto patientPostDto) {
+        if (patientPostDto == null) {
+            return null;
+        }
+
+        patient.setLastName(patientPostDto.getLastName());
+        patient.setFirstName(patientPostDto.getFirstName());
+        patient.setCellPhone(patientPostDto.getCellPhone());
+        patient.setBirthDate(patientPostDto.getBirthDate());
+        patient.setAddress(patientPostDto.getAddress());
+        patient.setCountry(patientPostDto.getCountry());
+        patient.setResultTest(patientPostDto.getResultTest());
+        patient.setTestDate(patientPostDto.getTestDate().toLocalDateTime());
+        return patient;
     }
 
 }

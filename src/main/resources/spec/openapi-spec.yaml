@@ -13,26 +13,34 @@ tags:
 
 paths:
   /cases-of-covid:
-    get:
-      tags:
-        - Cases
-      summary: Get Countries
-      operationId: getCountries
-      responses:
-        200:
-          description: countries
-          content:
-            application/json:
-              schema:
-                type: array
-                description: Found objects
-                items:
-                  $ref: '#/components/schemas/countryResponseDto'
     post:
       tags:
         - Cases
       summary: Create cases covid
       operationId: saveAllCases
+      requestBody:
+        description: patient list object that needs to be added
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Found objects
+              items:
+                $ref: '#/components/schemas/PatientPostDto'
+      responses:
+        201:
+          description: User Created
+          content:
+            application/json:
+              schema:
+                type: integer
+        default:
+          $ref: '#/components/responses/Error'
+    put:
+      tags:
+        - Cases
+      summary: Create cases covid
+      operationId: updateAllCases
       requestBody:
         description: patient list object that needs to be added
         content:
@@ -57,6 +65,10 @@ components:
     PatientPostDto:
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique user ID
         lastName:
           type: string
           description: lastName patient
@@ -87,6 +99,16 @@ components:
           $ref: '#/components/schemas/ResultTest'
         country:
           $ref: '#/components/schemas/Country'
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation date of conversation
+          example: "2021-01-30T08:30:00Z"
+        updatedAt:
+          type: string
+          format: date-time
+          description: Update date of conversation
+          example: "2021-01-30T08:30:00Z"
     Country:
       type: string
       enum:
@@ -100,30 +122,6 @@ components:
       enum:
         - POSITIVE
         - NEGATIVE
-    countryResponseDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: id of  country
-          example: 12
-        name:
-          type: string
-          description: country name
-          example: Tunisie
-        nationality:
-          type: string
-          description: nationality
-          example: Tunisienne
-        code:
-          type: string
-          description: code
-          example: TN
-        codeAlpha3:
-          type: string
-          description: codeAlpha3
-          example: TNN
-
     Error:
       required:
         - code
@@ -157,10 +155,10 @@ components:
             $ref: '#/components/schemas/Error'
 
   parameters:
-    organizationCode:
+    patientId:
       in: query
-      name: organizationCode
+      name: patientId
       schema:
         type: string
-        default: 9821HGT1
-      description: The organization Code
+        default: 205
+      description: The patient id
